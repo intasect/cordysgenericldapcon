@@ -1,0 +1,4 @@
+<methodsets>
+    <methodset file="${src.content.methodsets}/Method Set Generic LDAP 1.2.xml"/>
+    <methodset file="${src.content.methodsets}/Method Set Generic LDAP.xml"/>
+</methodsets>

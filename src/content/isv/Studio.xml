@@ -1,0 +1,3 @@
+<studio_flows buildfile="${build.studio.isv.filename}" destdir="${project.deploy}" ecxdir="cordys_install_dir">
+    <content file="${src.content.studio}/flows/3.Business Process Models/ADS LDAP User Synchronization/SyncAllStoreUsers_vcmdemo10.vcmdata"/>
+</studio_flows>

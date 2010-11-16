@@ -1,0 +1,4 @@
+<xforms>
+    <xform file="${src.content.studio.xforms}/com/cordys/coe/ac/genericldap/acconfig.caf"
+           key="/Cordys/WCP/XForms/runtime/acconfig.caf" name="acconfig.caf"/>
+</xforms>
