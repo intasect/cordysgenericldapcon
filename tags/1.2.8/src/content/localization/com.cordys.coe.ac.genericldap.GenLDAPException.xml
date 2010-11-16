@@ -1,0 +1,391 @@
+<?xml version="1.0"?>
+<!--
+Copyright 2007 Cordys R&amp;D B.V. 
+  
+  This file is part of the Cordys Generic LDAP Connector. 
+ 
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+  http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+-->
+
+<MessageBundle id="com.cordys.coe.ac.genericldap.GenLDAPException">
+    <Message id="ERROR_EXECUTING_SEARCH_REQUEST">
+        <MessageText><![CDATA[Error executing search request]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="ERROR_UPDATING_LDAP">
+        <MessageText><![CDATA[Error updating LDAP]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_0_HAS_BEEN_DELETED">
+        <MessageText><![CDATA['{0}' has been deleted.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_0_HAS_BEEN_MODIFIED_ON_THE_LDAP_SERVER">
+        <MessageText><![CDATA['{0}' has been modified on the LDAP server.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_0_OF_1_HAS_BEEN_DELETED_ON_THE_LDAP_SERVER">
+        <MessageText><![CDATA['{0}' of '{1}' has been deleted on the LDAP server.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_0_OF_1_HAS_BEEN_MODIFIED_ON_THE_LDAP_SERVER">
+        <MessageText><![CDATA['{0}' of '{1}' has been modified on the LDAP server.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ACTION_NOT_FOUND_IN_THE_IMPLEMENTATION">
+        <MessageText><![CDATA[Action not found in the implementation]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_CANT_FIND_THE_PARAMETER_DEFINITION_FOR_PARAMETER_WITH_NAME">
+        <MessageText><![CDATA[Can't find the parameter definition for parameter with name {0}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ERROR_COMMITTING_THE_TRANSACTION">
+        <MessageText><![CDATA[Error committing the transaction]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ERROR_CREATING_IMPLEMENTATION_CLASS">
+        <MessageText><![CDATA[Error creating implementation class]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ERROR_TRANSFORMING_THE_RESULTS_TO_XML">
+        <MessageText><![CDATA[Error transforming the results to XML]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_INVALID_IMPLEMENTATION_XML_CANNOT_FIND_ROOT_TAG">
+        <MessageText><![CDATA[Invalid implementation XML: Cannot find root tag]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_INVALID_METHOD_IMPLEMENTATION">
+        <MessageText><![CDATA[Invalid method implementation]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_MISSING_ATTRIBUTE_NAME">
+        <MessageText><![CDATA[Missing attribute name]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_MISSING_MANDATORY_PARAMETER">
+        <MessageText><![CDATA[Missing mandatory parameter {0}. The xpath ({1}) did not return a match.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_MISSING_REQUEST_INFORMATION_0">
+        <MessageText><![CDATA[Missing request information: {0}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_NO_ACTIVE_CONNECTION_TO_THE_LDAP">
+        <MessageText><![CDATA[No active connection to the LDAP.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_OBJECT_IS_CHANGED_BY_OTHER_USER_IN_LDAP">
+        <MessageText><![CDATA[Object is changed by other user in LDAP]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_OPERATION_0_IS_NOT_IMPLEMENTED">
+        <MessageText><![CDATA[Operation '{0}' is not implemented]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_PARAMETER_0_MUST_HAVE_AN_XPATH_DEFINED">
+        <MessageText><![CDATA[Parameter {0} must have an XPath defined]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_PARAMETER_0_MUST_HAVE_EITHER_A_FIXEDVALUE_OR_AN_XPATH_BUT_NOT_BOTH">
+        <MessageText><![CDATA[Parameter {0} must have either a fixedValue OR an xpath, but not both.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_THE_EXCLUDE_TAG_CANNOT_HAVE_AN_EMPTY_XPATH_ATTRIBUTE">
+        <MessageText><![CDATA[The exclude tag cannot have an empty xpath attribute.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_THE_INCLUDE_TAG_CANNOT_HAVE_AN_EMPTY_XPATH_ATTRIBUTE">
+        <MessageText><![CDATA[The include tag cannot have an empty xpath attribute]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_THE_PARAMETER_XML_IS_NOT_DEFINED">
+        <MessageText><![CDATA[The parameter XML is not defined.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_TUPLE_DID_NOT_CONTAIN_A_OLD_OR_A_NEW_TAG">
+        <MessageText><![CDATA[Tuple did not contain a old or a new tag.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="THE_DN_IS_INVALID">
+        <MessageText><![CDATA[The DN is invalid. Either It contains special characters '\\ / : * ? ; , \" ' & < > | # +' or invalid format.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_0_AND_1_DO_NOT_MATCH">
+        <MessageText><![CDATA['{0}' and '{1}' do not match.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ALREADY_EXISTS_IN_LDAP">
+        <MessageText><![CDATA['{0}' already exists in LDAP.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_DN_AND_CN_DO_NOT_MATCH">
+        <MessageText><![CDATA[DN and CN do not match.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ERROR_CREATING_OR_UPDATING_CORDYS_USERS">
+        <MessageText><![CDATA[Error creating or updating Cordys users.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ERROR_DURING_UPDATE_BUT_ROLLBACK_FAILED_REASON_">
+        <MessageText><![CDATA[Error during update. But rollback failed! Reason: ]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ERROR_EXECUTING_SEARCH_WITH_CRITERIAN0">
+        <MessageText><![CDATA[Error executing search with criteria:
+{0}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_FAILED_TO_UPDATECORDYSUSERS">
+        <MessageText><![CDATA[Failed to UpdateCordysUsers]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_METHOD_0_DOES_NOT_HAVE_A_PROPER_SEARCHROOT_FORMAT_1">
+        <MessageText><![CDATA[Method '{0}' does not have a proper searchroot format: {1}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_THE_USER_COULD_NOT_BE_FOUND_IN_THE_REQUEST">
+        <MessageText><![CDATA[The user could not be found in the request]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_COULD_NOT_CREATE_THE_DESIDERED_SECURITY_PROVIDER">
+        <MessageText><![CDATA[Could not create the desidered security provider.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_COULD_NOT_OBTAIN_FREE_LDAP_CONNECTION">
+        <MessageText><![CDATA[Could not obtain free LDAP connection]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ERROR_CREATING_CONNECTION_NUMBER_0_FOR_SERVER_12">
+        <MessageText><![CDATA[Error creating connection number {0} for server {1}:{2}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ERROR_CREATING_CONNECTION_TO_01">
+        <MessageText><![CDATA[Error creating connection to {0}:{1}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ERROR_EXECUTING_REQUEST_0">
+        <MessageText><![CDATA[Error executing request: {0}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ERROR_READING_LDAP_ENTRY_WITH_DN_0">
+        <MessageText><![CDATA[Error reading LDAP entry with DN {0}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ERROR_STARTING_GENERIC_LDAP_CONNECTOR">
+        <MessageText><![CDATA[Error starting Generic LDAP connector]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_THE_CLASS_0_DOES_NOT_EXTEND_THE_JAVASECURITYPROVIDER_CLASS">
+        <MessageText><![CDATA[The class {0} does not extend the java.security.Provider class.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_EXCEPTION_WHILE_CREATING_THE_CONFIGURATIONOBJECT">
+        <MessageText><![CDATA[Exception while creating the configuration-object.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_ROOTTAG_OF_THE_CONFIGURATION_SHOULD_BE_CONFIGURATION">
+        <MessageText><![CDATA[Root-tag of the configuration should be <configuration>]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="GLE_CONFIGURATION_NOT_FOUND">
+        <MessageText><![CDATA[Configuration not found]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+</MessageBundle>

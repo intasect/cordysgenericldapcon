@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<!--
+Copyright 2007 Cordys R&amp;D B.V. 
+  
+  This file is part of the Cordys Generic LDAP Connector. 
+ 
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+  http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+-->
+
+<MessageBundle id="com.cordys.coe.ac.genericldap.Messages">
+    <Message id="DELETE_FAILED">
+        <MessageText><![CDATA[Delete failed]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="ERROR_DISCONNECTING_CONNECTION">
+        <MessageText><![CDATA[Error disconnecting connection]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="ERROR_LOST_A_CONNECTION_BECAUSE_IT_COULD_NOT_BE_RECREATED">
+        <MessageText><![CDATA[Lost a connection, because it could not be recreated.]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="ERROR_PREPARING_REQUESTN0">
+        <MessageText><![CDATA[Error preparing request:\n{0}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="OBJECT_ALREADY_EXISTS">
+        <MessageText><![CDATA[Object already exists]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="connectorManagementDescription">
+        <MessageText><![CDATA[This component is used to access an LDAP server.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="coelibVersionMismatch">
+        <MessageText><![CDATA[Coelib version mismatch.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="connectorStarting">
+        <MessageText><![CDATA[Starting GenLDAPConnector Connector.
+System Information:
+{0}]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="connectorStarted">
+        <MessageText><![CDATA[GenLDAPConnector connector started.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="connectorStartException">
+        <MessageText><![CDATA[An error occurred while starting the GenLDAPConnector connector.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="connectorStopped">
+        <MessageText><![CDATA[GenLDAPConnector connector stopped.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="connectorReset">
+        <MessageText><![CDATA[Resetting GenLDAPConnector connector]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="transactionAbort">
+        <MessageText><![CDATA[Aborted the transaction.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="transactionCommit">
+        <MessageText><![CDATA[Committed the transaction.]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="transactionError">
+        <MessageText><![CDATA[An error occurred while processing the SOAP request: {0}]]></MessageText>
+        <Description/>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="CONFIG_SECURITY_PROVIDER_NOT_FOUND">
+        <MessageText><![CDATA[Could not find the security provider {0}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="UPDATE_ROLLBACK_FAILED_FOR_TUPLE">
+        <MessageText><![CDATA[Rollback failed for tuple: {0}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="UPDATE_COMMIT_LEVEL_FAILED">
+        <MessageText><![CDATA[Commit level failed for {0}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+    <Message id="UPDATE_ROLLBACK_FAILED_FOR_DN">
+        <MessageText><![CDATA[Rolling back failed for {0}]]></MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
+</MessageBundle>

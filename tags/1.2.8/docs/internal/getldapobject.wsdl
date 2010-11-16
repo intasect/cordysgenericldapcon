@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="GetLDAPObject"
+    targetNamespace="http://genldap.coe.cordys.com/1.2/methods"
+    xmlns:cordys="http://schemas.cordys.com/General/1.0/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://genldap.coe.cordys.com/1.2/methods" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:types>
+        <xsd:schema attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
+            targetNamespace="http://genldap.coe.cordys.com/1.2/methods" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import
+                namespace="http://schemas.cordys.com/General/1.0/" schemaLocation="http://srv-nl-ces70/cordys/WSDLGateway.wcp?service=http://schemas.cordys.com/CordysSchemas//CordysFaultDetails.xsd&amp;organization=o=Reporting,cn=cordys,o=vanenburg.com"/>
+            <xsd:element name="GetLDAPObject">
+                <xsd:complexType>
+                    <xsd:sequence>
+                    	<xsd:element minOccurs="1" name="dn"
+                    		type="xsd:string" maxOccurs="1"/>
+                    	<xsd:element name="return"
+                    		type="tns:ctReturn">
+                    	</xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="GetLDAPObjectResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element maxOccurs="1" minOccurs="0"
+                            name="tuple" type="tns:ctTuple"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:complexType name="anyType">
+                <xsd:sequence>
+                    <xsd:any/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="tuple" type="tns:ctTuple"/>
+            <xsd:element name="entry" type="tns:ctEntry"/>
+            <xsd:complexType name="ctEntry">
+                <xsd:sequence>
+                    <xsd:any processContents="lax"/>
+                </xsd:sequence>
+                <xsd:attribute name="dn" type="xsd:string" use="required"/>
+            </xsd:complexType>
+            <xsd:element name="string" type="xsd:string"/>
+            <xsd:complexType name="ctOld">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="old" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ctTuple">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="old" type="tns:ctLDAPEntry"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="new" type="tns:ctLDAPEntry"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ctLDAPEntry">
+                <xsd:sequence>
+                    <xsd:element ref="tns:entry"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        
+            <xsd:complexType name="ctReturn">
+            	<xsd:sequence>
+            		<xsd:element name="include" type="tns:ctAttributeList" maxOccurs="1" minOccurs="0"></xsd:element>
+            		<xsd:element name="exclude" type="tns:ctAttributeList" maxOccurs="1" minOccurs="0"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+        
+            <xsd:complexType name="ctAttributeList">
+            	<xsd:sequence>
+            		<xsd:element name="attribute" maxOccurs="unbounded" minOccurs="1">
+            			<xsd:complexType mixed="true">
+            				<xsd:attribute name="type" use="optional">
+            					<xsd:simpleType>
+            						<xsd:restriction
+            							base="xsd:string">
+            							<xsd:enumeration
+            								value="BINARY">
+            							</xsd:enumeration>
+            							<xsd:enumeration
+            								value="STRING">
+            							</xsd:enumeration>
+            						</xsd:restriction>
+            					</xsd:simpleType>
+            				</xsd:attribute>
+            			</xsd:complexType></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="CordysFaultDetail">
+        <wsdl:part element="cordys:FaultDetails" name="FaultDetail"/>
+    </wsdl:message>
+    <wsdl:message name="GetLDAPObject">
+        <wsdl:part element="tns:GetLDAPObject" name="body"/>
+    </wsdl:message>
+    <wsdl:message name="GetLDAPObjectResponse">
+        <wsdl:part element="tns:GetLDAPObjectResponse" name="body"/>
+    </wsdl:message>
+    <wsdl:portType name="GetLDAPObjectPortType">
+        <wsdl:operation name="GetLDAPObjectOperation">
+            <wsdl:input message="tns:GetLDAPObject"/>
+            <wsdl:output message="tns:GetLDAPObjectResponse"/>
+            <wsdl:fault message="tns:CordysFaultDetail" name="FaultDetail"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="GetLDAPObjectBinding" type="tns:GetLDAPObjectPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetLDAPObjectOperation">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FaultDetail">
+                <soap:fault name="FaultDetail" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="GetLDAPObjectService">
+        <wsdl:port binding="tns:GetLDAPObjectBinding" name="GetLDAPObjectPort">
+            <soap:address location="http://srv-nl-ces70/cordys/com.eibus.web.soap.Gateway.wcp?organization=o=Reporting,cn=cordys,o=vanenburg.com"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

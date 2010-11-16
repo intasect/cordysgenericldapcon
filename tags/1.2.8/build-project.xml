@@ -1,0 +1,41 @@
+<!--
+	This buildfile should be used to customize the default behavior of the build tasks.
+	All targets can be overridden in this file.
+-->
+<project>
+	<target name="createsourcezip">
+		<mkdir dir="${dist.dir}/source"/>
+		<zip destfile="${dist.dir}/source/source.zip">
+			<fileset dir="${basedir}" casesensitive="yes">
+				<patternset>
+					<include name="**/*"/>
+					<exclude name="build/**"/>
+					<exclude name="dist/**"/>
+					<exclude name="platform/**"/>
+					<exclude name="sdk/lib/**"/>
+					<exclude name="user.properties"/>
+					<exclude name="build-user.xml"/>
+					<exclude name="**/.svn/**"/>
+					<exclude name="**/*.scc"/>
+					<exclude name="**/CVS/**"/>
+				</patternset>
+			</fileset>
+		</zip>
+	</target>
+	
+	<!--Target for copying resources from distribution to release area-->
+	<target name="copy-release" depends="copy-dist,createsourcezip" if="release.repository.path">
+		<!-- 
+			First we make a ZIP with the whole project. We make sure that the 
+			platform, sdk/lib and user.properties are not included.
+		-->
+		<mkdir dir="${release.repository.path}/${project.name}/Release-${version.full}" />
+		<copy todir="${release.repository.path}/${project.name}/Release-${version.full}">
+			<fileset dir="${dist.dir}">
+				<patternset refid="all.non.cvs.files" />
+				<patternset refid="all.non.vss.files" />
+				<patternset refid="all.non.svn.files" />
+			</fileset>
+		</copy>
+	</target>	
+</project>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <title>Generic LDAP Connector Changelog</title>
+        <author email="mpoyhonen@cordys.com">Mikko Poyhonen</author>
+    </properties>
+    <template>
+        <release date="YYYY-MM-DD" description="OPTIONAL DESCRIPTION" version="x.y.z">
+            <action dev="USER" type="add|fix|update|change">
+				Description about the action.
+			</action>
+        </release>
+    </template>
+    <body>
+        <release description="Development release" version="@NEXT@">
+				</release>
+				<release date="2010-11-16" description="Migration release" version="1.2.8">
+<action dev="yravi" type="migration">Migrating the connector to opensource model.</action>
+</release>
+<release date="2009-08-27" description="Development release" version="1.2.7">
+				</release>
+<release date="2009-08-26" description="Development release" version="1.2.6">
+            <action dev="pgussow" type="add">Added the Update method to the Method Set Generic LDAP 1.2. This means that inserting, updating and delting entries is now also supported</action>
+        </release>
+        <release date="2009-06-29" description="Development release" version="1.2.5">
+            <action dev="mpoyhone" type="fix">Applied a fix from Dean Murphy which fixes a NullPointerException with custom schemas.</action>
+            <action dev="pgussow" type="fix">Fixed the link on the main page of the website.</action>
+        </release>
+        <release date="2009-06-15" description="Development release" version="1.2.4">
+            <action dev="pgussow" type="fix">Fixed a bug in the connection manager to deal with timeouts.</action>
+            <action dev="pgussow" type="fix">Fixed a bug in the response building: instead of using LDAPAttribute.getName() for the name of the response tag we're now using the LDAPAttribute.getBaseName()</action>
+        </release>
+        <release date="2009-06-11" description="Development release" version="1.2.3">
+            <action dev="pgussow" type="fix">Updated the WSDLs</action>
+        </release>
+        <release date="2009-06-10" description="Development release" version="1.2.2">
+            <action dev="pgussow" type="add">Made the dn field in SearchLDAP optional</action>
+            <action dev="pgussow" type="change">Made sure that entries which have the 'binary' sub type are now Base64 encoded data</action>
+        </release>
+        <release date="2009-05-06" description="Development release" version="1.2.1">
+            <action dev="pgussow" type="add">Added a new methodset which is basic profile compliant and has properly defined WSDLs</action>
+        </release>
+        <release date="2007-07-02" description="Development release" version="1.1.11">
+            <action dev="pgussow" type="add">Project site update release.</action>
+        </release>
+        <release date="2007-03-30" description="Development release" version="1.1.10">
+            <action dev="mpoyhone" type="update">Project site update release.</action>
+        </release>
+        <release date="2007-03-29" description="Development release" version="1.1.9">
+            <action dev="mpoyhone" type="update">Project site release.</action>
+        </release>
+    </body>
+</document>
