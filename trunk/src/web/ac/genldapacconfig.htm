@@ -1,0 +1,89 @@
+<html xmlns:eibus onapplicationready="appReady()">
+	<head>
+		<title>Application Logging Service</title>
+		<script type="text/javascript" src="/cordys/wcp/application.js"></script>
+		<script type="text/javascript" src="/cordys/wcp/admin/behavior/applicationconnector.js"></script>
+		<script type="text/javascript" src="/cordys/coe/genldapac/js/coelib.js"></script>
+	</head>
+	<script type="text/javascript">
+		
+		/**
+		 * This method is fired when the application is loaded. It will load the XForm in
+		 * a sub frame using the loadPage function in the coelib.js. It will first check if the
+		 * framework passes on the proper organizational context. If not, it will be passed on
+		 * to the XForm as a parameter.
+		 */
+		function appReady()
+		{
+			var sUrl =  "/cordys/com/cordys/coe/ac/genldapac/acconfig.caf";
+			var sOrg = findOrganization();
+			
+			if (sOrg) {
+				sUrl += "?organization=" + sOrg;
+			}
+		
+			//url, frame, id, caption, description, data, features, docked, left, top, width, height, callBack, useapplication
+			loadPage(sUrl, "frmDetailForm", "frmDetailForm", "frmDetailForm", "frmDetailForm", null, null, null, null, null, null, null, configPageLoaded, parent.application);
+		}
+		
+		/**
+		 * This method returns the proper organizational context. It will return null if 
+		 * the current application already has the organizational context set.
+		 */
+        function findOrganization() 
+        {
+        	if (application.organization || application.container.organization) 
+        	{
+        		// We already have the right organization, so no need to add it to the URL.
+				return null;
+            }
+
+			// This code will try to find the organization from new SOAP node wizard pages.
+            if (! parent || ! parent.frames || ! parent.frames.length) 
+            {
+            	return null; 
+			} 
+
+            len = parent.frames.length;
+
+            for (var i = 0; i < len; i++) {
+            	var f = parent.frames[i];
+
+            	if (f && f.application && f.application.organization) {
+                	return f.application.organization;
+				}
+			}
+			
+			return null;
+        }
+
+		/**
+		 * Call-back method for when the XForm has finished loading.
+		 */
+		function configPageLoaded()
+		{
+		}
+
+		/**
+		 * This method routes the createConnectorConfiguration method from the application connector
+		 * framework to the XForm.
+		 */
+		function createConnectorConfiguration(nConfigNode)
+		{
+			return frmDetailForm.frameElement.contentWindow.createConnectorConfiguration(nConfigNode);
+		}
+
+		/**
+		 * This method routes the fillInPropertyScreen method from the application connector
+		 * framework to the XForm.
+		 */
+		function fillInPropertyScreen(nConfigNode)
+		{
+			return frmDetailForm.frameElement.contentWindow.fillInPropertyScreen(nConfigNode);
+		}
+	</script>
+	<body>
+		<iframe id="frmDetailForm" style="width: 100%; height: 100%" class="container" src="about:blank">
+		</iframe>
+	</body>
+</html>

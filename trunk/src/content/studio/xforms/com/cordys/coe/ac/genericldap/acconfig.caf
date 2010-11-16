@@ -1,0 +1,394 @@
+
+<caf>
+	<documentProperties>
+		<name>acconfig</name>
+		<description>Connector Configuration</description>
+		<caption/>
+		<mimeType>caf</mimeType>
+		<notes/>
+		<version>vcmdemo10</version>
+		<revision/>
+		<createdBy></createdBy>
+		<creationDate></creationDate>
+		<lastModifiedBy></lastModifiedBy>
+		<lastModificationDate></lastModificationDate>
+		<customProperties>
+			<published></published>
+			<publishDate></publishDate>
+			<publishUser></publishUser>
+			<publishPath>/cordys/com/cordys/coe/ac/genericldap/acconfig.caf</publishPath>
+		</customProperties>
+	</documentProperties>
+	<content>
+		<xformhtml
+			xformsversion="1"
+			key="/acconfig_vcmdemo10.caf"
+			focusatstartup="true"
+			wcpforms:vcmVersion="vcmdemo10"
+			xmlns="http://schemas.cordys.com/1.0/xform"
+			xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+			xmlns:ev="http://www.w3.org/2001/xml-events"
+			xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+			xmlns:eibus="http://schemas.cordys.com/wcp/webframework">
+			<xhead>
+				<script
+					src="/cordys/coe/genldapac/js/debugusers.js"
+					xmlns=""
+				/>
+				<script
+					src="/cordys/coe/genldapac/js/coelib.js"
+					xmlns=""
+				/>
+				<style
+					src="/cordys/coe/genldapac/style/gl.css"
+					xmlns=""
+				/>
+				<script
+					src="/cordys/coe/genldapac/js/acsimpleconfig.js"
+				/>
+				<xforms:model
+					associatedmodel=""
+					id="mdlConfiguration"
+					instanceSchema="true"
+					isApplyAccessControl="false"
+					isConstraintValidation="false"
+					isInitializationRequired="false"
+					promptToSave="false"
+					singleTransaction="false"
+					wcpforms:automatic="true"
+					wcpforms:businessElement="configuration"
+					wcpforms:gateway="com.eibus.web.soap.Gateway.wcp"
+					wcpforms:nontransactional="true">
+					<xforms:instance
+						wcpforms:iteratorSize="50"
+						wcpforms:timeout="30000"
+						xmlns:wcpforms="http://schemas.cordys.com/wcp/xforms"
+						xmlns:xforms="http://www.w3.org/2002/xforms/cr"
+					/>
+					<wcpforms:instanceschema>
+						<schema
+							targetNamespace="http://genldap.coe.cordys.com/1.2/configuration"
+							xmlns="http://www.w3.org/2001/XMLSchema"
+							xmlns:tns="http://genldap.coe.cordys.com/1.2/configuration">
+							<element
+								name="configuration"
+								type="tns:ctConfiguration"
+							/>
+							<complexType
+								name="ctConfiguration">
+								<all>
+									<element
+										name="server"
+										type="string"
+									/>
+									<element
+										name="port"
+										type="int"
+									/>
+									<element
+										name="user"
+										type="string"
+									/>
+									<element
+										name="password"
+										type="string"
+									/>
+									<element
+										name="anonymousbind"
+										type="boolean"
+										maxOccurs="1"
+										minOccurs="1">
+														</element>
+									<element
+										name="securityprovider"
+										type="string"
+									/>
+									<element
+										name="searchroot"
+										type="string"
+									/>
+									<element
+										name="maximunnoofseachresult"
+										type="int"
+										maxOccurs="1"
+										minOccurs="0">
+														</element>
+									<element
+										name="nrofconnections"
+										type="int"
+										maxOccurs="1"
+										minOccurs="0">
+														</element>
+									<element
+										name="connectiontype">
+										<simpleType>
+											<restriction
+												base="string">
+												<enumeration
+													value="PLAIN"
+												/>
+												<enumeration
+													value="SECURE"
+												/>
+											</restriction>
+										</simpleType>
+									</element>
+									<element
+										name="keystore"
+										type="string"
+										maxOccurs="1"
+										minOccurs="0"
+									/>
+								</all>
+							</complexType>
+						</schema>
+					</wcpforms:instanceschema>
+				</xforms:model>
+				<xml
+					xmlns="http://schemas.cordys.com/1.0/xform">
+					<xml
+						id="xmlBaseObject">
+						<configuration
+							xmlns="http://genldap.coe.cordys.com/1.2/configuration">
+							<server/>
+							<port>389</port>
+							<user/>
+							<password/>
+							<anonymousbind/>
+							<securityprovider/>
+							<searchroot/>
+							<maximunnoofseachresult>50</maximunnoofseachresult>
+							<nrofconnections>5</nrofconnections>
+							<connectiontype>PLAIN</connectiontype>
+							<keystore/>
+						</configuration>
+					</xml>
+				</xml>
+			</xhead>
+			<xbody>
+				<xforms:group
+					wcpforms:layout="free"
+					id="xbody_group"
+					wcpforms:labelalign="ontop">
+					<xforms:group
+						appearance="box"
+						id="groupbox1"
+						model="mdlConfiguration"
+						wcpforms:textalign="left_align"
+						wcpforms:layout="free"
+						wcpforms:class="f_layout"
+						wcpforms:size="1033 290"
+						wcpforms:anchors="10px 10px 10px null"
+						wcpforms:position="10 10"
+						wcpforms:labelalign="left">
+						<xforms:label
+							wcpforms:class="groupheader">Enter the details for the configuration</xforms:label>
+						<xforms:input
+							id="input1"
+							ref="server"
+							doEBIValidate="false"
+							wcpforms:textalign="left_align"
+							wcpforms:class="f_layout"
+							wcpforms:size="1011 null"
+							wcpforms:anchors="10px 10px 10px null"
+							wcpforms:position="10 10">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="110 null">Servername</xforms:label>
+						</xforms:input>
+						<xforms:input
+							id="input2"
+							doEBIValidate="false"
+							ref="port"
+							wcpforms:textalign="left_align"
+							wcpforms:class="f_layout"
+							wcpforms:size="240 null"
+							wcpforms:position="10 30">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="110 null">Port</xforms:label>
+						</xforms:input>
+						<xforms:input
+							id="input5"
+							doEBIValidate="false"
+							ref="user"
+							wcpforms:textalign="left_align"
+							wcpforms:class="f_layout"
+							wcpforms:size="1011 null"
+							wcpforms:anchors="10px 70px 10px null"
+							wcpforms:position="10 70">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="110 null">Username</xforms:label>
+						</xforms:input>
+						<xforms:select1
+							id="select1"
+							ref="connectiontype"
+							doEBIValidate="false"
+							initializeValueSets="0"
+							wcpforms:enumerated="false"
+							multiple="false"
+							wcpforms:dataType="string"
+							wcpforms:textalign="left_align"
+							wcpforms:class="f_layout"
+							wcpforms:size="330 null"
+							wcpforms:position="10 50">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="110 null">Connection type</xforms:label>
+							<xforms:item
+								xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+								<xforms:label>Plain</xforms:label>
+								<xforms:value>PLAIN</xforms:value>
+							</xforms:item>
+							<xforms:item>
+								<xforms:label>SSL</xforms:label>
+								<xforms:value>SECURE</xforms:value>
+							</xforms:item>
+						</xforms:select1>
+						<xforms:secret
+							id="input6"
+							ref="password"
+							doEBIValidate="false"
+							wcpforms:textalign="left_align"
+							wcpforms:class="f_layout"
+							wcpforms:size="1011 null"
+							wcpforms:anchors="10px 90px 10px null"
+							wcpforms:position="10 90">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="110 null">Password</xforms:label>
+						</xforms:secret>
+						<xforms:input
+							id="input7"
+							doEBIValidate="false"
+							ref="maximunnoofseachresult"
+							wcpforms:textalign="left_align"
+							wcpforms:class="f_layout"
+							wcpforms:size="250 null"
+							wcpforms:position="10 110">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="110 null">Max search results</xforms:label>
+						</xforms:input>
+						<xforms:input
+							id="input8"
+							doEBIValidate="false"
+							ref="nrofconnections"
+							wcpforms:textalign="left_align"
+							wcpforms:class="f_layout"
+							wcpforms:size="230 null"
+							wcpforms:position="10 130">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="110 null">Nr of connections</xforms:label>
+						</xforms:input>
+						<xforms:input
+							id="input9"
+							doEBIValidate="false"
+							ref="searchroot"
+							wcpforms:textalign="left_align"
+							wcpforms:class="f_layout"
+							wcpforms:size="1011 null"
+							wcpforms:anchors="10px 150px 10px null"
+							wcpforms:position="10 150">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="110 null">Search root</xforms:label>
+						</xforms:input>
+						<xforms:input
+							id="input10"
+							doEBIValidate="false"
+							ref="securityprovider"
+							wcpforms:textalign="left_align"
+							wcpforms:class="f_layout"
+							wcpforms:size="1011 null"
+							wcpforms:anchors="10px 169px 10px null"
+							wcpforms:position="10 169">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="110 null">Security provider</xforms:label>
+						</xforms:input>
+						<xforms:input
+							id="input11"
+							doEBIValidate="false"
+							ref="keystore"
+							wcpforms:textalign="left_align"
+							wcpforms:class="f_layout"
+							wcpforms:size="1011 null"
+							wcpforms:anchors="10px 189px 10px null"
+							wcpforms:position="10 189">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="110 null">Keystore</xforms:label>
+						</xforms:input>
+						<xforms:select1
+							id="select2"
+							ref="anonymousbind"
+							doEBIValidate="false"
+							initializeValueSets="0"
+							wcpforms:enumerated="false"
+							multiple="false"
+							wcpforms:dataType="string"
+							wcpforms:textalign="left_align"
+							wcpforms:class="f_layout"
+							wcpforms:size="240 null"
+							wcpforms:position="10 209">
+							<xforms:label
+								wcpforms:class="h_label left_align"
+								wcpforms:size="110 null">Anonymous bind</xforms:label>
+							<xforms:item
+								xmlns:xforms="http://www.w3.org/2002/xforms/cr">
+								<xforms:label>Yes</xforms:label>
+								<xforms:value>true</xforms:value>
+							</xforms:item>
+							<xforms:item>
+								<xforms:label>No</xforms:label>
+								<xforms:value>false</xforms:value>
+							</xforms:item>
+						</xforms:select1>
+					</xforms:group>
+					<xforms:group
+						appearance="controlbox"
+						id="controlbox1"
+						controltype="button"
+						wcpforms:layout="horizontal"
+						wcpforms:class="f_layout"
+						wcpforms:align="left_align"
+						wcpforms:size="144 23"
+						wcpforms:position="10 310">
+						<xforms:trigger
+							id="btnTestSave"
+							wcpforms:class="h_button"
+							wcpforms:size="90 21">
+							<xforms:label>Test save</xforms:label>
+							<xforms:action
+								ev:event="xforms-activate">
+								<xforms:btnTestSave_Click/>
+							</xforms:action>
+						</xforms:trigger>
+					</xforms:group>
+				</xforms:group>
+			</xbody>
+			<xformsscript>
+				<![CDATA[function Form_InitDone(eventObject)
+{
+    handleInitDone(eventObject);
+}
+
+function Form_BeforeClose(eventObject)
+{
+    closeForm();
+}
+function btnTestSave_Click(eventObject)
+{
+    handleTestSave();
+}]]>
+			</xformsscript>
+			<xforms:action
+				ev:event="xforms-initialize-done">
+				<xforms:Form_InitDone/>
+			</xforms:action>
+		</xformhtml>
+	</content>
+</caf>

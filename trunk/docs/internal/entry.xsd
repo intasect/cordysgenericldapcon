@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.example.org/entry/"
+    xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/entry/">
+    <element name="tuple" type="tns:ctTuple"/>
+    <element name="entry" type="tns:ctEntry"/>
+    <complexType name="ctEntry">
+        <sequence>
+            <any processContents="lax"/>
+        </sequence>
+        <attribute name="dn" type="string" use="required"/>
+    </complexType>
+    <element name="string" type="string"/>
+    <element name="tuple" type="tns:ctTuple"/>
+    <complexType name="ctOld">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0" name="old" type="string"/>
+        </sequence>
+    </complexType>
+    <complexType name="ctTuple">
+        <sequence>
+            <element maxOccurs="1" minOccurs="0" name="old" type="tns:ctLDAPEntry"/>
+            <element maxOccurs="1" minOccurs="0" name="new" type="tns:ctLDAPEntry"/>
+        </sequence>
+    </complexType>
+    <complexType name="ctLDAPEntry">
+        <sequence>
+            <element ref="tns:entry"/>
+        </sequence>
+    </complexType>
+</schema>

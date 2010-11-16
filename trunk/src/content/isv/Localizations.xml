@@ -1,0 +1,4 @@
+<localizations>
+    <localization destdir="/localization" ecxdir="cordys_install_dir" source="${src.content.localizations}/com.cordys.coe.ac.genericldap.GenLDAPException.xml"/>
+    <localization destdir="/localization" ecxdir="cordys_install_dir" source="${src.content.localizations}/com.cordys.coe.ac.genericldap.Messages.xml"/>
+</localizations>

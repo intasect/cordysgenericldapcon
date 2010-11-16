@@ -1,0 +1,5 @@
+<applicationconnectors>
+    <applicationconnector file="${src.content.appcon}/com.cordys.coe.ac.genericldap.GenericLDAPConnector"
+                          key="/Cordys/WCP/Application Connector/com.cordys.coe.ac.genericldap.GenericLDAPConnector"
+                          name="com.cordys.coe.ac.genericldap.GenericLDAPConnector"/>
+</applicationconnectors>
