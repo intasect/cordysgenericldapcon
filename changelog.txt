@@ -1,0 +1,35 @@
+version 1.2.8 (released 2010-11-16)
+-migration: Migrating the connector to opensource model.
+
+version 1.2.7 (released 2009-08-27)
+
+version 1.2.6 (released 2009-08-26)
+-add: Added the Update method to the Method Set Generic LDAP 1.2. This means that inserting, updating and delting entries is now also supported
+
+version 1.2.5 (released 2009-06-29)
+-fix: Applied a fix from Dean Murphy which fixes a NullPointerException with custom schemas.
+-fix: Fixed the link on the main page of the website.
+
+version 1.2.4 (released 2009-06-15)
+-fix: Fixed a bug in the connection manager to deal with timeouts.
+-fix: Fixed a bug in the response building: instead of using LDAPAttribute.getName() for the name of the response tag we're now using the LDAPAttribute.getBaseName()
+
+version 1.2.3 (released 2009-06-11)
+-fix: Updated the WSDLs
+
+version 1.2.2 (released 2009-06-10)
+-add: Made the dn field in SearchLDAP optional
+-change: Made sure that entries which have the 'binary' sub type are now Base64 encoded data
+
+version 1.2.1 (released 2009-05-06)
+-add: Added a new methodset which is basic profile compliant and has properly defined WSDLs
+
+version 1.1.11 (released 2007-07-02)
+-add: Project site update release.
+
+version 1.1.10 (released 2007-03-30)
+-update: Project site update release.
+
+version 1.1.9 (released 2007-03-29)
+-update: Project site release.
+
