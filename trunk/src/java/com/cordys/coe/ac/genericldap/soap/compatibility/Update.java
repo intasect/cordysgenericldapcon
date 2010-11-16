@@ -1,12 +1,19 @@
-/**
- * Copyright © 2001 Cordys Systems, B.V. All rights reserved.
- * The copyright of the computer program(s) herein is the
- * property of Cordys Systems, B.V. The program(s)
- * may be used/copied only with the written permission of the
- * owner or in accordance with the terms and conditions stipulated
- * in the agreement/contract under which the program(s) have
- * been supplied.
+/*
+ * Copyright 2007 Cordys R&D B.V. 
  *
+ *   This file is part of the Cordys Generic LDAP Connector. 
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
  */
 package com.cordys.coe.ac.genericldap.soap.compatibility;
 
