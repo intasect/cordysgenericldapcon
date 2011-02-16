@@ -77,7 +77,7 @@ public class TestActiveDirectory
             System.out.println("whenCreated: " + attrSchema.getSyntaxString());
             System.out.println(attrSchema.isSingleValued());
             
-            Enumeration e = schema.getAttributeSchemas();
+            Enumeration<?> e = schema.getAttributeSchemas();
             while(e.hasMoreElements())
             {
             	Object s = e.nextElement();
