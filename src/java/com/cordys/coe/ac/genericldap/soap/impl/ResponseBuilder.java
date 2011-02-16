@@ -67,10 +67,6 @@ public class ResponseBuilder
      */
     private static final CordysLogger LOG = CordysLogger.getCordysLogger(ResponseBuilder.class);
     /**
-     * Holds whether or not all non-mentioned attributes should be included.
-     */
-    private boolean m_defaultInclude;
-    /**
      * Holds the entries to return.
      */
     private LDAPEntry[] m_entries;
@@ -103,20 +99,16 @@ public class ResponseBuilder
      * @param  schema             Holds the schema to return.
      * @param  includeAttributes  Holds the list of attributes that should be included.
      * @param  excludeAttributes  Holds the list of attributes that should be excluded.
-     * @param  defaultInclude     Holds whether or not all non-mentioned attributes should be
-     *                            included.
      */
     public ResponseBuilder(int responseXML, LDAPEntry[] entries, LDAPSchema schema,
                            Map<String, IAttributeDefinition> includeAttributes,
-                           Map<String, IAttributeDefinition> excludeAttributes,
-                           boolean defaultInclude)
+                           Map<String, IAttributeDefinition> excludeAttributes)
     {
         m_responseXML = responseXML;
         m_entries = entries;
         m_schema = schema;
         m_includeAttributes = includeAttributes;
         m_excludeAttributes = excludeAttributes;
-        m_defaultInclude = defaultInclude;
     }
 
     /**
@@ -190,32 +182,18 @@ public class ResponseBuilder
      */
     protected boolean shouldInclude(String attrName)
     {
-        boolean returnValue = m_defaultInclude;
-
-        if (m_defaultInclude)
-        {
-            if (m_excludeAttributes.containsKey(attrName))
-            {
-                returnValue = false;
-            }
-            else
-            {
-                returnValue = true;
-            }
-        }
-        else
-        {
-            if (m_includeAttributes.containsKey(attrName))
-            {
-                returnValue = true;
-            }
-            else
-            {
-                returnValue = false;
-            }
-        }
-
-        return returnValue;
+    	boolean returnValue = false;
+    	
+    	if ((m_includeAttributes.size() == 0)|| m_includeAttributes.containsKey(attrName))
+    	{
+    		returnValue = true;
+    		if (m_excludeAttributes.containsKey(attrName))
+    		{
+    			returnValue = false;
+    		}	
+    	}
+    	
+    	return returnValue;
     }
 
     /**

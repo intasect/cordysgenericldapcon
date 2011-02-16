@@ -1,19 +1,16 @@
 /*
- * Copyright 2007 Cordys R&D B.V. 
+ * Copyright 2007 Cordys R&D B.V.
  *
- *   This file is part of the Cordys Generic LDAP Connector. 
+ * This file is part of the Cordys Generic LDAP Connector.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");  you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
  *
- *   http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software  distributed under the License is distributed on
+ * an "AS IS" BASIS,  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the
+ * specific language governing permissions and  limitations under the License.
  */
 package com.cordys.coe.ac.genericldap.soap.impl;
 
@@ -35,6 +32,7 @@ import com.novell.ldap.LDAPSearchConstraints;
 import com.novell.ldap.LDAPSearchResults;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -112,16 +110,14 @@ public class SearchLDAPImpl extends GetLDAPObjectImpl
 
         if (sort == 0)
         {
-            throw new GenericLDAPConnectorException(GenLDAPExceptionMessages.GLE_MISSING_REQUEST_INFORMATION_0,
-                                                    "sort");
+            throw new GenericLDAPConnectorException(GenLDAPExceptionMessages.GLE_MISSING_REQUEST_INFORMATION_0, "sort");
         }
 
         param = RequestParameter.getInstance(sort);
         addRequestParameter(param);
 
         // Parse the implementation for parameter maxsearchresults.
-        int maxsearchresults = XPathHelper.selectSingleNode(actionXML, "impl:maxsearchresults",
-                                                            m_xmi);
+        int maxsearchresults = XPathHelper.selectSingleNode(actionXML, "impl:maxsearchresults", m_xmi);
 
         if (maxsearchresults == 0)
         {
@@ -133,8 +129,7 @@ public class SearchLDAPImpl extends GetLDAPObjectImpl
         addRequestParameter(param);
 
         // Parse the implementation for parameter referralfollowing.
-        int referralfollowing = XPathHelper.selectSingleNode(actionXML, "impl:referralfollowing",
-                                                             m_xmi);
+        int referralfollowing = XPathHelper.selectSingleNode(actionXML, "impl:referralfollowing", m_xmi);
 
         if (referralfollowing == 0)
         {
@@ -177,37 +172,17 @@ public class SearchLDAPImpl extends GetLDAPObjectImpl
         int maxSearchResults = paramMaxSearchResults.getIntValue(method.getRequestXML(), xmi,
                                                                  method.getConfiguration()
                                                                  .getMaximumNumberOfSearchResults());
-        boolean referralFollowing = paramReferralFollowing.getBooleanValue(method.getRequestXML(),
-                                                                           xmi);
+        boolean referralFollowing = paramReferralFollowing.getBooleanValue(method.getRequestXML(), xmi);
 
-        // If possible figure out which attributes to use while searching.
-        String[] attributeNames = null;
-
-        if (getReturnAttributes().getDefaultInclude() == false)
-        {
-            // The default is not to include all fields, so this means that the list of attributes
-            // that must be returned is well defined.
-            Map<String, IAttributeDefinition> at = getReturnAttributes().getIncludeAttributes(method
-                                                                                              .getRequestXML(),
-                                                                                              xmi);
-            attributeNames = new String[at.size()];
-
-            int count = 0;
-
-            for (String attributeName : at.keySet())
-            {
-                attributeNames[count] = attributeName;
-                count++;
-            }
-        }
+        String[] attributeNames = determineAttributesToIncludeInSearch(method, xmi);
 
         try
         {
             if (LOG.isDebugEnabled())
             {
-                LOG.debug("Executing search. Parameters:\nDN: '" + dn + "'\nScope: '" + scope +
-                          "'\nFilter: '" + filter + "'\nMax search results: '" + maxSearchResults +
-                          "'\nSort: '" + sort + "'\nFollow referrals: '" + referralFollowing + "'");
+                LOG.debug("Executing search. Parameters:\nDN: '" + dn + "'\nScope: '" + scope + "'\nFilter: '" +
+                          filter + "'\nMax search results: '" + maxSearchResults + "'\nSort: '" + sort +
+                          "'\nFollow referrals: '" + referralFollowing + "'");
             }
 
             // Add contraints.
@@ -216,8 +191,8 @@ public class SearchLDAPImpl extends GetLDAPObjectImpl
             constraints.setReferralFollowing(referralFollowing);
 
             // Execute the actual LDAP search.
-            LDAPSearchResults results = connectionManager.search(dn, scope, filter, attributeNames,
-                                                                 false, constraints);
+            LDAPSearchResults results = connectionManager.search(dn, scope, filter, (String[])
+                                                                 attributeNames, false, constraints);
 
             ArrayList<LDAPEntry> entriesList = new ArrayList<LDAPEntry>();
 
@@ -229,13 +204,50 @@ public class SearchLDAPImpl extends GetLDAPObjectImpl
             }
 
             // Build up the actual response.
-            buildResponse(method, connectionManager, xmi,
-                          entriesList.toArray(new LDAPEntry[entriesList.size()]));
+            buildResponse(method, connectionManager, xmi, entriesList.toArray(new LDAPEntry[entriesList.size()]));
         }
         catch (Exception e)
         {
-            throw new GenericLDAPConnectorException(e,
-                                                    GenLDAPExceptionMessages.ERROR_EXECUTING_SEARCH_REQUEST);
+            throw new GenericLDAPConnectorException(e, GenLDAPExceptionMessages.ERROR_EXECUTING_SEARCH_REQUEST);
         }
+    }
+
+    /**
+     * Determine the attributes to include in the search.
+     *
+     * @param   method  The basemethod.
+     * @param   xmi     The namespace definitions.
+     *
+     * @return  A list of attribute names
+     *
+     * @throws  GenericLDAPConnectorException  In case of any exceptions
+     */
+    private String[] determineAttributesToIncludeInSearch(BaseMethod method, XPathMetaInfo xmi)
+                                                       throws GenericLDAPConnectorException
+    {
+        Map<String, IAttributeDefinition> includeAttr = getReturnAttributes().getIncludeAttributes(method
+                                                                                                   .getRequestXML(),
+                                                                                                   xmi);
+        Map<String, IAttributeDefinition> excludeAttr = getReturnAttributes().getExcludeAttributes(method
+                                                                                                   .getRequestXML(),
+                                                                                                   xmi);
+        List<String> attributeNames = new ArrayList<String>();
+
+        for (String attName : includeAttr.keySet())
+        {
+        	// Only return attributes that are not present in exclude list.
+            if (!excludeAttr.containsKey(attName))
+            {
+                attributeNames.add(attName);
+            }
+        }
+        
+        if ((includeAttr.size() > 0) && (attributeNames.size() == 0))   
+        {
+        	// All included attributes are also excluded; throw error
+        	throw new GenericLDAPConnectorException(GenLDAPExceptionMessages.NO_ATTRIBUTES_TO_INCLUDE_IN_SEARCH);
+        }
+
+        return attributeNames.toArray(new String[0]);
     }
 }

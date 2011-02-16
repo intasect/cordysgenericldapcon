@@ -328,8 +328,7 @@ Copyright 2007 Cordys R&amp;D B.V.
 						mandatory="false"
 						default="false"
 					/>
-					<return
-						default="include">
+					<return>
 						<include
 							xpath="ns:return/ns:include/ns:attribute"
 						/>

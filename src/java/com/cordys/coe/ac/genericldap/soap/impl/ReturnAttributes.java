@@ -42,10 +42,6 @@ public class ReturnAttributes
      */
     private static final CordysLogger LOG = CordysLogger.getCordysLogger(ReturnAttributes.class);
     /**
-     * Holds whether or not all attributes are default included in the response.
-     */
-    private boolean m_defaultInclude;
-    /**
      * Holds all the defined attributes for the exclusion part.
      */
     private Map<String, IAttributeDefinition> m_excludeAttributes = new LinkedHashMap<String, IAttributeDefinition>();
@@ -73,14 +69,6 @@ public class ReturnAttributes
     public ReturnAttributes(int returnXML, XPathMetaInfo xmi)
                      throws GenericLDAPConnectorException
     {
-        // Get whether or not all attributes are either default included or default excluded.
-        String defaultInclude = Node.getAttribute(returnXML, "default", "include");
-
-        if (!"exclude".equalsIgnoreCase(defaultInclude))
-        {
-            m_defaultInclude = true;
-        }
-
         // Get the include attributes.
         int includeXML = XPathHelper.selectSingleNode(returnXML, "impl:include", xmi);
 
@@ -135,16 +123,6 @@ public class ReturnAttributes
     }
 
     /**
-     * This method gets whether or not all attributes are default included in the response.
-     *
-     * @return  Whether or not all attributes are default included in the response.
-     */
-    public boolean getDefaultInclude()
-    {
-        return m_defaultInclude;
-    }
-
-    /**
      * This method returns the list of attributes that should be excluded. If no attributes are
      * defined it will return an empty map. When an empty map is returned it means that ALL
      * attributes must be INCLUDED in the response unless the default is 'exclude'.
@@ -159,69 +137,18 @@ public class ReturnAttributes
     public Map<String, IAttributeDefinition> getExcludeAttributes(int request,
                                                                   XPathMetaInfo xmi)
                                                            throws GenericLDAPConnectorException
-    {
-        return getAttributes(request, xmi, m_excludeAttributes, m_xpathExclude);
-    }
-
-    /**
-     * This method returns the list of attributes that should be included. If no attributes are
-     * defined it will return an empty map. When an empty map is returned it means that ALL
-     * attributes must be included in the response.
-     *
-     * @param   request  The request as received.
-     * @param   xmi      The XPathMetaInfo object.
-     *
-     * @return  The list of attributes that should be included.
-     *
-     * @throws  GenericLDAPConnectorException  In case of any exceptions.
-     */
-    public Map<String, IAttributeDefinition> getIncludeAttributes(int request,
-                                                                  XPathMetaInfo xmi)
-                                                           throws GenericLDAPConnectorException
-    {
-        return getAttributes(request, xmi, m_includeAttributes, m_xpathInclude);
-    }
-
-    /**
-     * This method sets wether or not all attributes are default included in the response.
-     *
-     * @param  defaultInclude  Whether or not all attributes are default included in the response.
-     */
-    public void setDefaultInclude(boolean defaultInclude)
-    {
-        m_defaultInclude = defaultInclude;
-    }
-
-    /**
-     * This method returns the list of attributes that should be excluded. If no attributes are
-     * defined it will return an empty map. When an empty map is returned it means that ALL
-     * attributes must be INCLUDED in the response unless the default is 'exclude'.
-     *
-     * @param   request           The request as received.
-     * @param   xmi               The XPathMetaInfo object.
-     * @param   sourceAttributes  The source attributes.
-     * @param   xpath             The Xpath to evaluate on the request.
-     *
-     * @return  The list of attributes that should be included.
-     *
-     * @throws  GenericLDAPConnectorException  In case of any exceptions.
-     */
-    private Map<String, IAttributeDefinition> getAttributes(int request, XPathMetaInfo xmi,
-                                                            Map<String, IAttributeDefinition> sourceAttributes,
-                                                            String xpath)
-                                                     throws GenericLDAPConnectorException
-    {
+    {      
         Map<String, IAttributeDefinition> returnMap = new LinkedHashMap<String, IAttributeDefinition>();
 
-        for (IAttributeDefinition ad : sourceAttributes.values())
+        for (IAttributeDefinition ad : m_excludeAttributes.values())
         {
             returnMap.put(ad.getName(), ad);
         }
 
-        if (xpath != null)
+        if (m_xpathExclude != null)
         {
             // Search the request.
-            int[] attributes = XPathHelper.selectNodes(request, xpath, xmi);
+            int[] attributes = XPathHelper.selectNodes(request, m_xpathExclude, xmi);
 
             if ((attributes != null) && (attributes.length > 0))
             {
@@ -237,6 +164,69 @@ public class ReturnAttributes
         return returnMap;
     }
 
+    /**
+     * This method returns the list of attributes that should be included. If no attributes are
+     * defined it will return an empty map. When an empty map is returned it means that ALL
+     * attributes must be included in the response.
+     * Only include attributes in the request that are a subset of the include attributes defined
+     * in the method implementation are returned.
+     *
+     * @param   request  The request as received.
+     * @param   xmi      The XPathMetaInfo object.
+     *
+     * @return  The list of attributes that should be included.
+     *
+     * @throws  GenericLDAPConnectorException  In case of any exceptions.
+     */
+    public Map<String, IAttributeDefinition> getIncludeAttributes(int request,
+                                                                  XPathMetaInfo xmi)
+                                                           throws GenericLDAPConnectorException
+    {
+    	boolean includeAttributesInRequest = false;
+    	
+        Map<String, IAttributeDefinition> returnMap = new LinkedHashMap<String, IAttributeDefinition>();
+        if (m_xpathInclude != null)
+        {
+            // Search the request.
+            int[] attributes = XPathHelper.selectNodes(request, m_xpathInclude, xmi);
+        	// add attribute when it's also in method implementation
+            if ((attributes != null) && (attributes.length > 0))
+            {
+            	includeAttributesInRequest = true;
+                // Parse the predefined attributes.
+                for (int attrDef : attributes)
+                {
+                    AttributeDefinition ad = new AttributeDefinition(attrDef);
+                    
+                    // Only add attribute when no attributes are defined in method implementation
+                    // or when it's defined as an attribute in method implementation.
+                    if ((m_includeAttributes.size() == 0) || m_includeAttributes.containsKey(ad.getName()))
+            		{
+                    	returnMap.put(ad.getName(), ad);
+            		}
+                }
+            }   
+        }
+        
+        if ((m_includeAttributes.size() > 0) && includeAttributesInRequest && (returnMap.size() == 0))
+        {
+        	// All attributes that are in include are also in the exclude. This will result 
+        	// in an empty include list which returns all attributes. This is not allowed.
+            throw new GenericLDAPConnectorException(GenLDAPExceptionMessages.NO_ATTRIBUTES_TO_INCLUDE_IN_SEARCH);
+        }
+        
+        if (!includeAttributesInRequest && m_includeAttributes.size() > 0)
+        {
+        	// No attributes in request; just return attributes from method implementation
+            for (IAttributeDefinition ad : m_includeAttributes.values())
+            {
+                returnMap.put(ad.getName(), ad);
+            }
+        }
+
+        return returnMap;
+    }
+    
     /**
      * This class wraps the attribute definitions.
      *

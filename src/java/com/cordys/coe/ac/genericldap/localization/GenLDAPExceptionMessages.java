@@ -307,5 +307,11 @@ public class GenLDAPExceptionMessages
 	 * Configuration not found
 	 */
 	public static final Message GLE_CONFIGURATION_NOT_FOUND = MESSAGE_SET.getMessage("GLE_CONFIGURATION_NOT_FOUND");
+	/**
+	 * Holds the definition of the message with ID NO_ATTRIBUTES_TO_INCLUDE_IN_SEARCH.
+	 * Message text:
+	 * No attributes to include in search.
+	 */
+	public static final Message NO_ATTRIBUTES_TO_INCLUDE_IN_SEARCH = MESSAGE_SET.getMessage("NO_ATTRIBUTES_TO_INCLUDE_IN_SEARCH");
 
 }
