@@ -1,0 +1,15 @@
+<configuration xmlns="http://genldap.coe.cordys.com/1.2/configuration">
+	<configuration>
+		<connectiontype>SECURE</connectiontype>
+		<keystore>.\test\java\com\cordys\coe\test\local_cars.jks</keystore>
+		<maximunnoofseachresult>50</maximunnoofseachresult>
+		<password>BASE64ENCODEDPASSWORD</password>
+		<port>6366</port>
+		<searchroot>cn=cordys,cn=DEV,o=cordys.csc.nl</searchroot>
+		<securityprovider>org.bouncycastle.jce.provider.BouncyCastleProvider</securityprovider>
+		<anonymousbind>false</anonymousbind>
+		<user>cn=Directory Manager,o=cordys.csc.nl</user>
+		<server>10.4.5.39</server>
+		<nrofconnections>1</nrofconnections>
+	</configuration>
+</configuration>

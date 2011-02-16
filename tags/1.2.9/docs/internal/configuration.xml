@@ -1,0 +1,13 @@
+<configuration xmlns="http://genldap.coe.cordys.com/1.2/configuration">
+  <server>server</server>
+  <port>0</port>
+  <user>user</user>
+  <password>password</password>
+  <anonymousbind>true</anonymousbind>
+  <securityprovider>securityprovider</securityprovider>
+  <searchroot>searchroot</searchroot>
+  <maximunnoofseachresult>0</maximunnoofseachresult>
+  <nrofconnections>0</nrofconnections>
+  <connectiontype>PLAIN</connectiontype>
+  <keystore>keystore</keystore>
+</configuration>

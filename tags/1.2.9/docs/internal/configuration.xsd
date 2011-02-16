@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://genldap.coe.cordys.com/1.2/configuration"
+	targetNamespace="http://genldap.coe.cordys.com/1.2/configuration">
+	<element name="configuration" type="tns:ctConfiguration"></element>
+
+	<complexType name="ctConfiguration">
+		<all>
+
+			<element name="server" type="string"></element>
+			<element name="port" type="int"></element>
+			<element name="user" type="string"></element>
+			<element name="password" type="string"></element>
+			<element name="anonymousbind" type="boolean" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="securityprovider" type="string"></element>
+			<element name="searchroot" type="string"></element>
+			<element name="maximunnoofseachresult" type="int"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="nrofconnections" type="int" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="connectiontype">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="PLAIN"></enumeration>
+						<enumeration value="SECURE"></enumeration>
+					</restriction>
+				</simpleType>
+			</element>
+
+			<element name="keystore" type="string" maxOccurs="1" minOccurs="0"></element>
+		</all>
+	</complexType>
+</schema>
