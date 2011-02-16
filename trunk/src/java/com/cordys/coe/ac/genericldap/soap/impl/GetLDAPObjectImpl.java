@@ -88,7 +88,7 @@ public class GetLDAPObjectImpl extends BaseImplementation
 
         addRequestParameter(param);
 
-        // Now we need to parse the return structure. It offers the posibility to define which
+        // Now we need to parse the return structure. It offers the possibility to define which
         // fields should be returned and possibly which type they have.
         int returnXML = XPathHelper.selectSingleNode(actionXML, "impl:return", m_xmi);
 
@@ -184,8 +184,7 @@ public class GetLDAPObjectImpl extends BaseImplementation
 
             ResponseBuilder builder = new ResponseBuilder(responseXML, entries,
                                                           connectionManager.getSchema(),
-                                                          includeAttributes, excludeAttributes,
-                                                          m_returnAttributes.getDefaultInclude());
+                                                          includeAttributes, excludeAttributes);
             builder.buildResponse();
         }
     }

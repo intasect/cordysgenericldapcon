@@ -388,4 +388,12 @@ Copyright 2007 Cordys R&amp;D B.V.
             <DocumenationURL/>
         </Annotations>
     </Message>
+    <Message id="NO_ATTRIBUTES_TO_INCLUDE_IN_SEARCH">
+        <MessageText>No attributes to include in search.</MessageText>
+        <Description>
+        </Description>
+        <Annotations>
+            <DocumenationURL/>
+        </Annotations>
+    </Message>
 </MessageBundle>
