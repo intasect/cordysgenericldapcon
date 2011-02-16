@@ -174,11 +174,6 @@ public class GenericLDAPTransaction
                 }
             }
 
-            if (actualMethod == null)
-            {
-                throw new GenericLDAPConnectorException(GenLDAPExceptionMessages.GLE_INVALID_METHOD_IMPLEMENTATION);
-            }
-
             // Do the actual execution.
             if (LOG.isDebugEnabled())
             {
