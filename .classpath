@@ -14,6 +14,7 @@
 	<classpathentry kind="lib" path="platform/ext/ldap.jar"/>
 	<classpathentry kind="lib" path="platform/components/acllib/acllib.jar"/>
 	<classpathentry kind="lib" path="platform/components/ldapconn/ldapconn.jar"/>
+	<classpathentry kind="lib" path="platform/ext/bcprov-jdk15-135.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="platform/int/ldap.jar"/>
 	<classpathentry kind="output" path="classes"/>
