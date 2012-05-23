@@ -95,6 +95,7 @@
                   </xsd:restriction>
                 </xsd:simpleType>
               </xsd:attribute>
+              <xsd:attribute name="options" type="xsd:string" use="optional"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:sequence>

@@ -205,6 +205,10 @@ Copyright 2007 Cordys R&amp;D B.V.
 												</xsd:restriction>
 											</xsd:simpleType>
 										</xsd:attribute>
+										<xsd:attribute
+											name="options"
+											type="xsd:string"
+											use="optional"/>
 									</xsd:complexType>
 								</xsd:element>
 							</xsd:sequence>
@@ -558,6 +562,10 @@ Copyright 2007 Cordys R&amp;D B.V.
 												</xsd:restriction>
 											</xsd:simpleType>
 										</xsd:attribute>
+										<xsd:attribute
+											name="options"
+											type="xsd:string"
+											use="optional"/>
 									</xsd:complexType>
 								</xsd:element>
 							</xsd:sequence>

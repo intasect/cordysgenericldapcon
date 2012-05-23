@@ -35,6 +35,13 @@ public interface IAttributeDefinition
 	public abstract EAttributeType getType();
 
 	/**
+	 * This method gets the options of an attribute.
+	 *
+	 * @return  The options of an attribute.
+	 */
+	public abstract String getOptions();
+	
+	/**
 	 * This method sets the name of the attribute.
 	 *
 	 * @param  name  The name of the attribute.
@@ -48,4 +55,10 @@ public interface IAttributeDefinition
 	 */
 	public abstract void setType(EAttributeType type);
 
+	/**
+	 * This method sets the options of an attribute.
+	 *
+	 * @return  The options of an attribute.
+	 */
+	public abstract void setOptions(String options);
 }

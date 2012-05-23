@@ -65,6 +65,18 @@ public interface IConnectionManager
      */
     LDAPEntry readLDAPEntry(String dn)
                      throws GenericLDAPConnectorException;
+    
+    /**
+     * This method will read a specific DN from the LDAP server.
+     *
+     * @param   dn  The DN to read.
+     *
+     * @return  The LDAP entry that was read.
+     *
+     * @throws  GenericLDAPConnectorException  In case of any exceptions.
+     */
+    LDAPEntry readLDAPEntry(String dn, String[] attributes)
+                     throws GenericLDAPConnectorException;
 
     /**
      * This method releases the connection to the pool.

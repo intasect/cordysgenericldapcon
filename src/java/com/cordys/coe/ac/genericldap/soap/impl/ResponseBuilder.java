@@ -18,6 +18,7 @@
 package com.cordys.coe.ac.genericldap.soap.impl;
 
 import com.eibus.util.logger.CordysLogger;
+import com.eibus.util.logger.Severity;
 
 import com.eibus.xml.nom.Node;
 
@@ -144,6 +145,17 @@ public class ResponseBuilder
 
                     // Create the root tag for the attribute.
                     int xmlAttribute = Node.createElementWithParentNS(attrName, null, entryXML);
+                    String attrOptions = attribute.getName();
+                    if(!attrName.equals(attrOptions)) {
+                    	try {
+                    		Node.setAttribute(xmlAttribute, "options", attrOptions.substring(attrOptions.indexOf(';')+1));	
+						} catch (Exception e) {
+							if (LOG.isEnabled(Severity.FATAL)) {
+								LOG.log(Severity.FATAL, "Failed to set response options for attribute --> " + attrOptions);
+							}
+						}
+                    	
+                    }
 
                     if (isBinary)
                     {
@@ -184,7 +196,7 @@ public class ResponseBuilder
     {
     	boolean returnValue = false;
     	
-    	if ((m_includeAttributes.size() == 0)|| m_includeAttributes.containsKey(attrName))
+    	if ((m_includeAttributes.size() == 0)||  m_includeAttributes.containsKey("*") || m_includeAttributes.containsKey(attrName))
     	{
     		returnValue = true;
     		if (m_excludeAttributes.containsKey(attrName))

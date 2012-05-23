@@ -1,3 +1,8 @@
+version 1.2.11 (released 2012-05-23)
+-fix: 
+        Issue 4:	"Issue in reading large members from Active Directory" has been fixed
+        
+
 version 1.2.9 (released 2011-02-16)
 -fix: Applied a patch from Her van de Vliert which fixes a include option issue, which returned all attributes instead of the specified attributes.
 

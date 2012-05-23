@@ -211,43 +211,4 @@ public class SearchLDAPImpl extends GetLDAPObjectImpl
             throw new GenericLDAPConnectorException(e, GenLDAPExceptionMessages.ERROR_EXECUTING_SEARCH_REQUEST);
         }
     }
-
-    /**
-     * Determine the attributes to include in the search.
-     *
-     * @param   method  The basemethod.
-     * @param   xmi     The namespace definitions.
-     *
-     * @return  A list of attribute names
-     *
-     * @throws  GenericLDAPConnectorException  In case of any exceptions
-     */
-    private String[] determineAttributesToIncludeInSearch(BaseMethod method, XPathMetaInfo xmi)
-                                                       throws GenericLDAPConnectorException
-    {
-        Map<String, IAttributeDefinition> includeAttr = getReturnAttributes().getIncludeAttributes(method
-                                                                                                   .getRequestXML(),
-                                                                                                   xmi);
-        Map<String, IAttributeDefinition> excludeAttr = getReturnAttributes().getExcludeAttributes(method
-                                                                                                   .getRequestXML(),
-                                                                                                   xmi);
-        List<String> attributeNames = new ArrayList<String>();
-
-        for (String attName : includeAttr.keySet())
-        {
-        	// Only return attributes that are not present in exclude list.
-            if (!excludeAttr.containsKey(attName))
-            {
-                attributeNames.add(attName);
-            }
-        }
-        
-        if ((includeAttr.size() > 0) && (attributeNames.size() == 0))   
-        {
-        	// All included attributes are also excluded; throw error
-        	throw new GenericLDAPConnectorException(GenLDAPExceptionMessages.NO_ATTRIBUTES_TO_INCLUDE_IN_SEARCH);
-        }
-
-        return attributeNames.toArray(new String[0]);
-    }
 }

@@ -239,6 +239,11 @@ public class ReturnAttributes
          * Holds the name of the attribute.
          */
         private String m_name;
+        
+        /**
+         * Holds the options of an attribute.
+         */
+        private String m_options;
 
         /**
          * Holds the type for the parameter.
@@ -276,6 +281,8 @@ public class ReturnAttributes
                 }
                 m_type = EAttributeType.STRING;
             }
+            
+            m_options = Node.getAttribute(attrDef, "options");
         }
 
         /**
@@ -308,6 +315,21 @@ public class ReturnAttributes
         public void setType(EAttributeType type)
         {
             m_type = type;
+        }
+        
+        /**
+         * @see  com.cordys.coe.ac.genericldap.soap.impl.IAttributeDefinition#getName()
+         */
+        public String getOptions()
+        {
+            return m_options;
+        }   
+        /**
+         * @see  com.cordys.coe.ac.genericldap.soap.impl.IAttributeDefinition#setName(java.lang.String)
+         */
+        public void setOptions(String options)
+        {
+        	m_options = options;
         }
     }
 }

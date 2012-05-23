@@ -302,33 +302,50 @@ class ConnectionManager
     public LDAPEntry readLDAPEntry(String dn)
                             throws GenericLDAPConnectorException
     {
-        LDAPEntry returnLDAPEntry = null;
-
-        LDAPConnection con = getConnection();
-
-        try
-        {
-            if (LOG.isDebugEnabled())
-            {
-                LOG.debug("Reading entry with DN: " + dn);
-            }
-            returnLDAPEntry = con.read(dn);
-        }
-        catch (Exception e)
-        {
-            throw new GenericLDAPConnectorException(e,
-                                                    GenLDAPExceptionMessages.GLE_ERROR_READING_LDAP_ENTRY_WITH_DN_0,
-                                                    dn);
-        }
-        finally
-        {
-            // Put the connection back in the queue.
-            releaseConnection(con);
-        }
-
-        return returnLDAPEntry;
+        return readLDAPEntry(dn, null);
     }
 
+    /**
+     * This method will read a specific DN from the LDAP server.
+     *
+     * @param   dn  The DN to read.
+     *
+     * @return  The LDAP entry that was read.
+     *
+     * @throws  GenericLDAPConnectorException  In case of any exceptions.
+     */
+
+    public LDAPEntry readLDAPEntry(String dn, String[] attributes)
+            				throws GenericLDAPConnectorException
+	{
+		LDAPEntry returnLDAPEntry = null;
+		
+		LDAPConnection con = getConnection();
+		
+		try
+		{
+			if (LOG.isDebugEnabled())
+			{
+				LOG.debug("Reading entry with DN: " + dn);
+			}
+			returnLDAPEntry = con.read(dn, attributes);
+		}
+		catch (Exception e)
+		{
+			throw new GenericLDAPConnectorException(e,
+			                                    GenLDAPExceptionMessages.GLE_ERROR_READING_LDAP_ENTRY_WITH_DN_0,
+			                                    dn);
+		}
+		finally
+		{
+			// Put the connection back in the queue.
+			releaseConnection(con);
+		}
+		
+		return returnLDAPEntry;
+	}    
+  
+    
     /**
      * This method releases the connection to the pool.
      *

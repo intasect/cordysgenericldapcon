@@ -29,6 +29,8 @@ import com.eibus.xml.xpath.XPathMetaInfo;
 
 import com.novell.ldap.LDAPEntry;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -137,7 +139,8 @@ public class GetLDAPObjectImpl extends BaseImplementation
 
         String dn = paramDN.getStringValue(method.getRequestXML(), xmi);
 
-        LDAPEntry entry = connectionManager.readLDAPEntry(dn);
+        String[] attributeNames = determineAttributesToIncludeInSearch(method, xmi);
+        LDAPEntry entry = connectionManager.readLDAPEntry(dn, attributeNames);
 
         // Build up the actual response.
         buildResponse(method, connectionManager, xmi, new LDAPEntry[] { entry });
@@ -188,4 +191,50 @@ public class GetLDAPObjectImpl extends BaseImplementation
             builder.buildResponse();
         }
     }
+
+    /**
+     * Determine the attributes to include in the search.
+     *
+     * @param   method  The basemethod.
+     * @param   xmi     The namespace definitions.
+     *
+     * @return  A list of attribute names
+     *
+     * @throws  GenericLDAPConnectorException  In case of any exceptions
+     */
+    protected String[] determineAttributesToIncludeInSearch(BaseMethod method, XPathMetaInfo xmi)
+                                                       throws GenericLDAPConnectorException
+    {
+        Map<String, IAttributeDefinition> includeAttr = getReturnAttributes().getIncludeAttributes(method
+                                                                                                   .getRequestXML(),
+                                                                                                   xmi);
+        Map<String, IAttributeDefinition> excludeAttr = getReturnAttributes().getExcludeAttributes(method
+                                                                                                   .getRequestXML(),
+                                                                                                   xmi);
+        List<String> attributeNames = new ArrayList<String>();
+
+        for (String attName : includeAttr.keySet())
+        {
+        	// Only return attributes that are not present in exclude list.
+            if (!excludeAttr.containsKey(attName))
+            {
+                attributeNames.add(attName);
+                IAttributeDefinition attribute = includeAttr.get(attName);
+                if( attribute != null ) {
+                	String options = attribute.getOptions();
+                	if( !(options == null || options.length() == 0) ) {
+                		attributeNames.add(attName + ";" + options);
+                	}
+                }
+            }
+        }
+        
+        if ((includeAttr.size() > 0) && (attributeNames.size() == 0))   
+        {
+        	// All included attributes are also excluded; throw error
+        	throw new GenericLDAPConnectorException(GenLDAPExceptionMessages.NO_ATTRIBUTES_TO_INCLUDE_IN_SEARCH);
+        }
+
+        return attributeNames.toArray(new String[0]);
+    }    
 }
