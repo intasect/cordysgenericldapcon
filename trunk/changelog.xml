@@ -14,6 +14,11 @@
     <body>
         <release description="Development release" version="@NEXT@">
 				</release>
+<release date="2012-05-23" description="Development release" version="1.2.11">
+         <action dev="kdinesh" type="fix">
+        Issue 4:	"Issue in reading large members from Active Directory" has been fixed
+        </action>
+				</release>
 		<release date="2011-02-16" description="Development release" version="1.2.9">
             <action dev="srkrishnan" type="fix">Applied a patch from Her van de Vliert which fixes a include option issue, which returned all attributes instead of the specified attributes.</action>
             
