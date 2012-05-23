@@ -1,4 +1,4 @@
-version 1.2.11 (released 2012-05-23)
+version 1.2.10 (released 2012-05-23)
 -fix: 
         Issue 4:	"Issue in reading large members from Active Directory" has been fixed
         

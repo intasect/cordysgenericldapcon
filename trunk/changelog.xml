@@ -14,8 +14,8 @@
     <body>
         <release description="Development release" version="@NEXT@">
 				</release>
-<release date="2012-05-23" description="Development release" version="1.2.11">
-         <action dev="kdinesh" type="fix">
+<release date="2012-05-23" description="Development release" version="1.2.10">
+        <action dev="kdinesh" type="fix">
         Issue 4:	"Issue in reading large members from Active Directory" has been fixed
         </action>
 				</release>
