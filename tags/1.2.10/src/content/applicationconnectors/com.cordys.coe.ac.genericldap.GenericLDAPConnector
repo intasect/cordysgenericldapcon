@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applicationconnector>
+	<step>
+		<url>/cordys/coe/genldapac/ac/genldapacconfig.htm</url>
+		<description>Generic LDAP Connector</description>
+		<caption>Provide Details for the Generic LDAP Connector</caption>
+		<implementation>com.cordys.coe.ac.genericldap.GenericLDAPConnector</implementation>
+		<image>/cordys/wcp/images/admin/configurationconnector.png</image>
+		<sharejvm>true</sharejvm>
+		<product>Generic LDAP</product>
+		<isv>CoE Connectors</isv>
+		<metadata>
+			<url/>
+			<foradministrator>false</foradministrator>
+			<fordeveloper>false</fordeveloper>
+		</metadata>
+		<spycategory>
+			<category>GENLDAP</category>
+		</spycategory>
+	    <loggercategory>
+	      <categorygroup displayname="Cordys CoE Generic LDAP Connector">
+	        <category>com.cordys.coe.ac.genericldap</category>
+	      </categorygroup>
+	      <categorygroup displayname="Cordys CoE Generic LDAP Connection Manager">
+	        <category>com.cordys.coe.ac.genericldap.connection</category>
+	      </categorygroup>
+	      <categorygroup displayname="Cordys CoE Generic LDAP SOAP methods">
+	        <category>com.cordys.coe.ac.genericldap.soap</category>
+	      </categorygroup>
+	      <categorygroup displayname="Cordys CoE Generic LDAP Response Builder">
+	        <category>com.cordys.coe.ac.genericldap.soap.impl.ResponseBuilder</category>
+	      </categorygroup>
+		</loggercategory>
+	    <classpath>
+	      <location>coe/genldapac/classes</location>
+	      <location>coe/genldapac/genldapac.jar</location>
+	      <location>coe/genldapac/coelib.jar</location>
+	    </classpath>			
+	</step>
+</applicationconnector>
